@@ -1,316 +1,167 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nikhil Maalige — Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<!-- background trace, decorative -->
-<svg class="bg-trace" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
-  <path d="M0,780 L1440,780" stroke="var(--line)" stroke-width="1"/>
-</svg>
-
-<div class="readout" aria-hidden="true">
-  <span class="dot"></span>
-  <span id="readoutText">STATUS · ONLINE</span>
-</div>
-
-<header class="nav-wrap">
-  <nav class="nav">
-    <a href="#home" class="nav-name">Nikhil Maalige</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#home" data-nav>Home</a></li>
-      <li><a href="#research" data-nav>Research</a></li>
-      <li><a href="#projects" data-nav>Projects</a></li>
-      <li><a href="#experience" data-nav>Experience</a></li>
-      <li><a href="#leadership" data-nav>Leadership</a></li>
-      <li><a href="#beyond" data-nav>Beyond Academics</a></li>
-      <li><a href="#contact" data-nav>Contact</a></li>
-    </ul>
-  </nav>
-</header>
-
-<main>
-
-  <!-- ============ HOME / HERO ============ -->
-  <section id="home" class="section hero">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <p class="eyebrow">// aspiring computer scientist &amp; bioengineering researcher</p>
-        <h1 class="hero-title">Hello, I'm<br><span>Nikhil Maalige</span></h1>
-        <p class="hero-sub">Exploring how technology can improve human health — at the intersection of computer science, machine learning, and bioengineering.</p>
-        <p class="hero-body">I'm a student at Bergen County Academies interested in how intelligent systems can contribute to healthcare and real-world problem solving.</p>
-        <a href="#research" class="btn">View Research</a>
-      </div>
-      <div class="hero-monitor" aria-hidden="true">
-        <svg id="ekgSvg" viewBox="0 0 400 160" class="ekg">
-          <polyline id="ekgLine" fill="none" stroke="var(--accent-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" points=""/>
-        </svg>
-        <div class="monitor-labels">
-          <span>CS × BIOENG</span>
-          <span>SIGNAL: LEARNING</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider" data-trace="calm"></div>
-
-  <!-- ============ ABOUT ============ -->
-  <section class="section about">
-    <p class="eyebrow">01 · About Me</p>
-    <div class="about-grid">
-      <div>
-        <h2 class="section-title">Aspiring Student</h2>
-        <p>I'm passionate about understanding how technology can be used to solve meaningful, real-world problems — especially in healthcare and biomedical innovation.</p>
-        <p>My interest in computer science began through programming and technical coursework, but over time it expanded into a broader curiosity about how intelligent systems and engineering can support human health. This has led me toward machine learning, reinforcement learning, diagnostics, and healthcare technology through research, technical projects, and collaborative learning.</p>
-        <p>Currently, I'm exploring these interests through projects, academic research, and hands-on learning while continuing to deepen my technical foundation in software development and computational thinking.</p>
-      </div>
-      <div class="mission-card">
-        <p class="mission-eyebrow">My Mission</p>
-        <h3>Learning, Building, and Creating Meaningful Impact</h3>
-        <p>I'm driven by curiosity and a desire to understand how ideas can be transformed into solutions that make a real difference. Whether through technology, research, or collaboration, I enjoy exploring complex problems, learning continuously, and building skills that can contribute to meaningful impact.</p>
-      </div>
-    </div>
-
-    <p class="eyebrow areas-eyebrow">Areas I'm Exploring</p>
-    <div class="cards-3">
-      <div class="card">
-        <span class="card-index">01</span>
-        <h4>Healthcare Technology</h4>
-        <p>Exploring how engineering and computational systems can support diagnostics, medical innovation, and patient-centered care.</p>
-      </div>
-      <div class="card">
-        <span class="card-index">02</span>
-        <h4>Machine Learning &amp; AI</h4>
-        <p>Learning how intelligent systems work and exploring applications of machine learning and reinforcement learning.</p>
-      </div>
-      <div class="card">
-        <span class="card-index">03</span>
-        <h4>Software Development</h4>
-        <p>Building technical skills through programming, full-stack development, and problem-solving experiences.</p>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider" data-trace="sharp"></div>
-
-  <!-- ============ RESEARCH ============ -->
-  <section id="research" class="section dark">
-    <p class="eyebrow">02 · University Research Exposure</p>
-    <h2 class="section-title light">Learning Reinforcement Learning Through Research Mentorship</h2>
-    <p class="lede">Through an opportunity to work with an NJIT professor, I've been learning the theory behind reinforcement learning and preparing to contribute to ongoing academic research.</p>
-    <p class="lede">This experience has helped me better understand how advanced computational concepts are explored in research environments, while expanding my interest in artificial intelligence and problem-solving systems.</p>
-    <p class="lede">At Bergen County Academies, I've pursued advanced coursework that continues to shape my academic interests and strengthen my technical foundation.</p>
-
-    <div class="coursework-grid">
-      <div class="course-block">
-        <h4>Computer Science &amp; Software Systems</h4>
-        <p class="course-intro">My coursework has introduced me to both foundational and applied areas of computing, including:</p>
-        <ul>
-          <li>AP Computer Science &amp; Data Structures</li>
-          <li>MERN Stack Web Development</li>
-          <li>Sockets &amp; Threading</li>
-          <li>Web Application Development</li>
-        </ul>
-      </div>
-      <div class="course-block">
-        <h4>Engineering &amp; STEM Exploration</h4>
-        <p class="course-intro">Through interdisciplinary STEM coursework, I've explored how engineering principles connect with technology and innovation.</p>
-        <ul>
-          <li>Mechatronics</li>
-          <li>Foundations of Nano</li>
-          <li>Advanced Mathematical Analysis</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="quote-block">
-      <p>&ldquo;I enjoy learning across disciplines because many meaningful problems require different ways of thinking.&rdquo;</p>
-      <p class="quote-sub">From mathematics and programming to language studies and collaborative projects, I value experiences that challenge me to think critically and approach problems from multiple perspectives.</p>
-    </div>
-  </section>
-
-  <div class="divider" data-trace="calm"></div>
-
-  <!-- ============ PROJECTS ============ -->
-  <section id="projects" class="section">
-    <p class="eyebrow">03 · Projects</p>
-    <h2 class="section-title">Projects</h2>
-
-    <div class="project-list">
-      <article class="project-row">
-        <div class="project-num">A</div>
-        <div>
-          <h4>FBLA Mobile App Project</h4>
-          <p>As part of FBLA, I collaborated on developing a mobile application and presenting our work to judges. This experience strengthened my:</p>
-          <ul class="chip-list">
-            <li>Team collaboration</li>
-            <li>Problem-solving under deadlines</li>
-            <li>Communication &amp; presentation skills</li>
-            <li>Technical thinking</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="project-row">
-        <div class="project-num">B</div>
-        <div>
-          <h4>Hackathons &amp; Game Jams</h4>
-          <p>Participating in hackathons and game jams has taught me how to quickly transform ideas into practical solutions while working within tight constraints.</p>
-          <p class="label-sm">What I Learned</p>
-          <ul class="chip-list">
-            <li>Planning matters as much as execution</li>
-            <li>Collaboration improves outcomes</li>
-            <li>Creativity grows through problem-solving</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="project-row">
-        <div class="project-num">C</div>
-        <div>
-          <h4>Software Development &amp; Programming</h4>
-          <p>Through coursework and personal exploration, I've built technical foundations in programming — approaching research as a way of asking better questions, exploring ideas deeply, and learning through curiosity.</p>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <div class="divider" data-trace="sharp"></div>
-
-  <!-- ============ EXPERIENCE ============ -->
-  <section id="experience" class="section">
-    <p class="eyebrow">04 · Professional Experience</p>
-    <h2 class="section-title">Professional Experience</h2>
-
-    <div class="exp-card">
-      <div class="exp-head">
-        <div>
-          <h4>Susanne Godau — State Farm Insurance Agency</h4>
-          <p class="exp-role">Agent Team Member</p>
-        </div>
-        <p class="exp-date">December 2025 – Present</p>
-      </div>
-      <p>Supporting clients with policy inquiries, claims coordination, account updates, and payment processing in a fast-paced professional environment.</p>
-      <p class="label-sm">Key Skills Gained</p>
-      <ul class="chip-list">
-        <li>Communication</li>
-        <li>Customer Support</li>
-        <li>Professionalism</li>
-        <li>Responsibility</li>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nikhil Maalige</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <a href="index.html" class="logo">Nikhil Maalige</a>
+      <button
+        class="nav-toggle"
+        id="navToggle"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="leadership.html">Leadership</a></li>
+        <li><a href="beyond-academics.html">Beyond Academics</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
-    </div>
-  </section>
+    </header>
 
-  <div class="divider" data-trace="calm"></div>
+    <main>
+      <!-- HERO -->
+      <section class="hero-split">
+        <div class="hero-left">
+          <h1 class="hero-h1">Hello<br />I'm Nikhil Maalige</h1>
+          <p class="hero-sub">
+            Aspiring Computer Scientist &amp; Bioengineering Researcher |
+            Exploring How Technology Can Improve Human Health
+          </p>
+          <p class="hero-body">
+            I'm a student at Bergen County Academies interested in the
+            intersection of computer science, machine learning, and
+            bioengineering — exploring how intelligent systems can contribute to
+            healthcare and real-world problem solving.
+          </p>
+          <a href="research.html" class="btn-pill">View Research</a>
+        </div>
+        <div class="hero-right">
+          <img
+            class="hero-image"
+            src="assets/MyPicture.png"
+            alt="Illustration representing research and technology"
+          />
+        </div>
+      </section>
 
-  <!-- ============ LEADERSHIP ============ -->
-  <section id="leadership" class="section dark">
-    <p class="eyebrow">05 · Leadership &amp; Community</p>
-    <h2 class="section-title light">Growing Through Collaboration, Service &amp; Shared Learning</h2>
+      <!-- ABOUT ME -->
+      <section class="split-panel">
+        <div class="panel-indigo">
+          <h2>About Me</h2>
+        </div>
+        <div class="panel-white">
+          <h3>Aspiring Student</h3>
+          <p>
+            I'm passionate about understanding how technology can be used to
+            solve meaningful, real-world problems — especially in healthcare and
+            biomedical innovation.
+          </p>
+          <p>
+            My interest in <strong>computer science</strong> began through
+            programming and technical coursework, but over time it expanded into
+            a broader curiosity about
+            <strong
+              >how intelligent systems and engineering can support human
+              health</strong
+            >. This interest has led me to explore areas such as
+            <strong
+              >machine learning, reinforcement learning, diagnostics, and
+              healthcare technology</strong
+            >
+            through research, technical projects, and collaborative learning
+            experiences.
+          </p>
+          <p>
+            Currently, I'm exploring these interests through projects, academic
+            research, and hands-on learning opportunities while continuing to
+            deepen my technical foundation in software development and
+            computational thinking.
+          </p>
 
-    <div class="leadership-approach">
-      <p class="label-sm">My Approach — What Leadership Means to Me</p>
-      <p class="lede">For me, leadership isn't always about taking charge — it's about contributing, helping others learn, and creating spaces where people can grow together.</p>
-    </div>
+          <div class="mission-block">
+            <h3>My Mission</h3>
+            <p class="mission-tagline">
+              Learning, Building, and Creating Meaningful Impact
+            </p>
+            <p>
+              I'm driven by curiosity and a desire to understand how ideas can
+              be transformed into solutions that make a real difference. Whether
+              through technology, research, or collaboration, I enjoy exploring
+              complex problems, learning continuously, and building skills that
+              can contribute to meaningful impact.
+            </p>
+          </div>
+        </div>
+      </section>
 
-    <div class="leadership-grid">
-      <div class="lead-card">
-        <h4>Cofounder &amp; Peer Teacher</h4>
-        <p class="lead-org">Machine Learning Club</p>
-        <p>Helped create a space for students to explore machine learning through collaboration, discussion, and shared curiosity.</p>
-        <p class="focus">Focused on: Peer learning · Teaching · Community building</p>
-      </div>
-      <div class="lead-card">
-        <h4>Teacher &amp; Volunteer</h4>
-        <p class="lead-org">Summer Band Program</p>
-        <p>Worked with younger musicians in small-group and ensemble settings, helping students build confidence and improve technique.</p>
-        <p class="focus">Focused on: Mentorship · Patience · Encouragement</p>
-      </div>
-      <div class="lead-card">
-        <h4>Volunteer</h4>
-        <p class="lead-org">Senior Center</p>
-        <p>Supported meal service, events, and community activities for senior residents throughout the year.</p>
-        <p class="focus">Focused on: Service · Consistency · Community</p>
-      </div>
-    </div>
-    <p class="built-through">Built Through Experience: Teamwork · Communication · Discipline</p>
-  </section>
+      <!-- AREAS I'M EXPLORING -->
+      <section class="photo-band">
+        <h2>Areas I'm Exploring</h2>
+        <div class="card-grid">
+          <div class="glass-card">
+            <h4>Healthcare Technology</h4>
+            <p>
+              Exploring how engineering and computational systems can support
+              diagnostics, medical innovation, and patient-centered care.
+            </p>
+          </div>
+          <div class="glass-card">
+            <h4>Machine Learning &amp; AI</h4>
+            <p>
+              Learning how intelligent systems work and exploring applications
+              of machine learning and reinforcement learning.
+            </p>
+          </div>
+          <div class="glass-card">
+            <h4>Software Development</h4>
+            <p>
+              Building technical skills through programming, full-stack
+              development, and problem-solving experiences.
+            </p>
+          </div>
+        </div>
+      </section>
 
-  <div class="divider" data-trace="sharp"></div>
+      <!-- BEYOND THE CLASSROOM -->
+      <section class="solid-split">
+        <div class="col-left">
+          <h2>Beyond the Classroom</h2>
+        </div>
+        <div class="col-right">
+          <p>
+            Outside academics, I enjoy playing the alto and tenor saxophone,
+            participating in marching band and ensemble performances,
+            collaborating in hackathons, and teaching younger students through
+            music programs.
+          </p>
+          <p>
+            These experiences continue to shape how I approach teamwork,
+            discipline, communication, and creative problem-solving.
+          </p>
+        </div>
+      </section>
+    </main>
 
-  <!-- ============ BEYOND ACADEMICS ============ -->
-  <section id="beyond" class="section">
-    <p class="eyebrow">06 · Beyond Academics</p>
-    <h2 class="section-title">Beyond Academics</h2>
-    <p class="lede">Beyond research and technology, I enjoy experiences that challenge me creatively, build discipline, and bring people together.</p>
+    <footer class="footer">
+      <p>&copy; 2026 by Nikhil Maalige.</p>
+    </footer>
 
-    <div class="beyond-grid">
-      <div class="beyond-block">
-        <p class="label-sm">Music &amp; Performance</p>
-        <h4>Marching Band</h4>
-        <p>Being part of marching band has taught me the value of commitment, focus, and working toward a shared goal.</p>
-        <h4>Saxophone Ensemble</h4>
-        <p>I play both alto and tenor saxophone, performing in ensemble settings and continuing to grow as a musician.</p>
-      </div>
-      <div class="beyond-block">
-        <p class="label-sm">Building &amp; Exploring</p>
-        <h4>Hackathons &amp; Game Jams</h4>
-        <p>I enjoy fast-paced environments that challenge me to think creatively, experiment with ideas, and collaborate under pressure.</p>
-      </div>
-      <div class="beyond-block">
-        <p class="label-sm">Language &amp; Perspective</p>
-        <h4>Languages</h4>
-        <p>English · Kannada · French</p>
-      </div>
-      <div class="beyond-block">
-        <p class="label-sm">Quick Interests</p>
-        <ul class="chip-list">
-          <li>Music &amp; performance</li>
-          <li>Exploring new technologies</li>
-          <li>Hackathons &amp; collaborative challenges</li>
-          <li>Learning through different perspectives</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider" data-trace="calm"></div>
-
-  <!-- ============ CONTACT ============ -->
-  <section id="contact" class="section contact">
-    <p class="eyebrow">07 · Contact</p>
-    <h2 class="section-title">Let's Connect</h2>
-    <p class="lede">Reach out directly, or find my work on GitHub.</p>
-
-    <div class="contact-links">
-      <a href="https://github.com/NikhilMaalige" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.11.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.7-1.28-1.7-1.04-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.71 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11.06 11.06 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.11 3.06.74.81 1.19 1.84 1.19 3.1 0 4.44-2.7 5.42-5.27 5.7.42.36.78 1.07.78 2.15 0 1.55-.01 2.8-.01 3.18 0 .3.21.67.79.55A10.51 10.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
-        <span>GitHub</span>
-      </a>
-      <a href="mailto:nmaalige@gmail.com" class="social-link" aria-label="Email">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M2 5.5A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18.5v-13zm2.2.5 7.8 5.6 7.8-5.6H4.2zM20 7.3l-7.5 5.4a1 1 0 0 1-1 0L4 7.3V18h16V7.3z"/></svg>
-        <span>nmaalige@gmail.com</span>
-      </a>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <p>&copy; 2026 Nikhil Maalige. Built with HTML, CSS &amp; JavaScript.</p>
-  </footer>
-
-</main>
-
-<script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
