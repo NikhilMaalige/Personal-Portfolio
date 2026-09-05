@@ -9,7 +9,7 @@ export const PROFILE = {
   fullName: "Nikhil Maalige",
   tagline:
     "Computer Science Student • Machine Learning & Bioengineering Researcher",
-  location: "Rutherford, New Jersey, USA",
+  location: "New Jersey, USA",
   email: "nmaalige@gmail.com",
   bio: [
     "I'm a junior at Bergen County Academies in Rutherford, New Jersey, studying an all Honors, AP, and IB course load with a 4.0/4.0 cumulative GPA. My focus is computer science — machine learning, data structures, and full-stack development — alongside research that applies those tools to real healthcare problems.",
