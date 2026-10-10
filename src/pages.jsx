@@ -1,10 +1,8 @@
-/* ==================================================================
-   pages.jsx — one component per route.
-   ================================================================== */
 import React from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import {
   PROFILE,
+  RESEARCH,
   EXPERIENCE,
   PROJECTS,
   AWARDS,
@@ -36,36 +34,28 @@ import {
   BackArrow,
   MailIcon,
   LinkedInIcon,
-  DownloadIcon,
   ExternalIcon,
 } from "./ui";
 
 const SITE = "Nikhil Maalige";
-
-/* ---------------- home ---------------- */
 
 const Hero = () => (
   <section className="hero">
     <div className="hero-inner">
       <p className="hero-eyebrow">{PROFILE.location}</p>
 
-      <h1 className="hero-name">
-        <span className="ln-1">{PROFILE.first}</span>
-        <span className="ln-2">{PROFILE.last}</span>
-      </h1>
+      <h1 className="hero-name">{PROFILE.fullName}</h1>
 
       <p className="hero-tag">{PROFILE.tagline}</p>
       <p className="hero-bio">{PROFILE.bio[0]}</p>
 
       <div className="cta-row">
-        <Link className="btn btn-primary" to="/work">
-          Research <Arrow />
+        <Link className="btn btn-primary" to="/research">
+          Research Experience <Arrow />
         </Link>
-        {PROFILE.cv && (
-          <a className="btn btn-ghost" href={PROFILE.cv} download>
-            <DownloadIcon /> Download CV
-          </a>
-        )}
+        <Link className="btn btn-ghost" to="/work">
+          Work Experience
+        </Link>
         {PROFILE.email && (
           <a className="btn btn-ghost" href={`mailto:${PROFILE.email}`}>
             <MailIcon size={16} /> Email
@@ -81,9 +71,9 @@ const ConnectPanel = () => (
     <div className="connect">
       <h2 className="connect-title">Let's Connect</h2>
       <p>
-        For research collaborations, internships, or competition teams — or just
+        For research collaborations, internships, or competition teams, or just
         to talk about machine learning, wearable diagnostics, or your next game
-        jam — I'd love to hear from you.
+        jam, I'd love to hear from you.
       </p>
       <div className="cta-row">
         <Link className="btn btn-primary" to="/contact">
@@ -99,8 +89,8 @@ const ConnectPanel = () => (
 
 export function Home() {
   usePageMeta(
-    `${SITE} | Computer Science Student · ML & Bioengineering Research`,
-    "Junior at Bergen County Academies — machine learning researcher, cofounder of the BCA Machine Learning Club, and builder of a wearable diagnostic device for Parkinsonian motor symptoms.",
+    `${SITE} | Aspiring Biomedical Engineer • Computer Science and Machine Learning Student`,
+    "Senior at Bergen County Academies: machine learning researcher, co-founder of the BCA Machine Learning Club, and builder of a wearable diagnostic device for Parkinsonian motor symptoms.",
   );
   return (
     <>
@@ -125,19 +115,32 @@ export function Home() {
 
       <section className="section">
         <SectionHead
-          title="Current research"
-          eyebrow="Mentored & Independent"
+          title="Research Experience"
+          eyebrow="Biomedical & Machine Learning"
         />
         <div className="grid-2">
-          {EXPERIENCE.filter((e) => e.featured)
-            .slice(0, 2)
-            .map((e, i) => (
-              <Reveal key={e.slug} delay={i * 90}>
-                <ExperienceCard e={e} />
-              </Reveal>
-            ))}
+          {RESEARCH.map((r, i) => (
+            <Reveal key={r.slug} delay={i * 90}>
+              <ExperienceCard e={r} basePath="/research" />
+            </Reveal>
+          ))}
         </div>
-        <MoreLink to="/work">All research and experience</MoreLink>
+        <MoreLink to="/research">All research experience</MoreLink>
+      </section>
+
+      <section className="section">
+        <SectionHead
+          title="Work Experience"
+          eyebrow="Industry & Leadership"
+        />
+        <div className="grid-2">
+          {EXPERIENCE.slice(0, 2).map((e, i) => (
+            <Reveal key={e.slug} delay={i * 90}>
+              <ExperienceCard e={e} basePath="/work" />
+            </Reveal>
+          ))}
+        </div>
+        <MoreLink to="/work">All work experience</MoreLink>
       </section>
 
       <section className="section">
@@ -207,8 +210,6 @@ export function Home() {
   );
 }
 
-/* ---------------- about ---------------- */
-
 export function About() {
   usePageMeta(
     `About | ${SITE}`,
@@ -236,7 +237,7 @@ export function About() {
         </div>
       </Reveal>
 
-      <SubHead title="Education" eyebrow="Rutherford, New Jersey" />
+      <SubHead title="Education" eyebrow="Hackensack, New Jersey" />
       <div className="stack">
         {EDUCATION.map((e, i) => (
           <Reveal key={e.level + e.dates} delay={i * 70}>
@@ -257,23 +258,98 @@ export function About() {
   );
 }
 
-/* ---------------- list pages ---------------- */
-
-export function Work() {
+export function Research() {
   usePageMeta(
-    `Research & Experience | ${SITE}`,
-    "Research assistantships, work experience, and teaching roles.",
+    `Research Experience | ${SITE}`,
+    "Biomedical device engineering and reinforcement learning investigations.",
   );
   return (
     <section className="section">
       <PageHead
-        title="Research & Experience"
-        eyebrow="Mentored & Independent"
+        title="Research Experience"
+        eyebrow="Biomedical & Machine Learning"
+      />
+      <div className="grid-2">
+        {RESEARCH.map((r, i) => (
+          <Reveal key={r.slug} delay={i * 70}>
+            <ExperienceCard e={r} basePath="/research" showBullets />
+          </Reveal>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export function ResearchDetail() {
+  const { slug } = useParams();
+  const e = RESEARCH.find((x) => x.slug === slug);
+  usePageMeta(e ? `${e.role} - ${e.org} | ${SITE}` : `Not found | ${SITE}`);
+  if (!e) return <Navigate to="/research" replace />;
+
+  return (
+    <section className="section">
+      <Link className="back-link" to="/research">
+        <BackArrow /> Back to research
+      </Link>
+
+      <header className="detail-head">
+        <h1>{e.role}</h1>
+        <p className="detail-org">{e.org}</p>
+        <div className="detail-meta">
+          <span>{e.badge}</span>
+          <span className="dot-sep">·</span>
+          <span>{e.dates}</span>
+          <span className="dot-sep">·</span>
+          <span>{e.location}</span>
+        </div>
+      </header>
+
+      <Reveal>
+        <div className="detail-panel">
+          <h2>Overview</h2>
+          <p>{e.desc}</p>
+
+          {e.bullets && (
+            <>
+              <h2>Key contributions</h2>
+              <ul className="bullets">
+                {e.bullets.map((b) => (
+                  <li key={b}>
+                    <span className="bullet-arrow">→</span>
+                    {b}
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+
+          <h2>Areas &amp; skills</h2>
+          <div className="tags centered">
+            {e.tags.map((t) => (
+              <Tag key={t}>{t}</Tag>
+            ))}
+          </div>
+        </div>
+      </Reveal>
+    </section>
+  );
+}
+
+export function Work() {
+  usePageMeta(
+    `Work Experience | ${SITE}`,
+    "Industry internships, customer operations, and technical leadership.",
+  );
+  return (
+    <section className="section">
+      <PageHead
+        title="Work Experience"
+        eyebrow="Industry & Leadership"
       />
       <div className="grid-2">
         {EXPERIENCE.map((e, i) => (
           <Reveal key={e.slug} delay={i * 70}>
-            <ExperienceCard e={e} showBullets />
+            <ExperienceCard e={e} basePath="/work" showBullets />
           </Reveal>
         ))}
       </div>
@@ -284,13 +360,13 @@ export function Work() {
 export function WorkDetail() {
   const { slug } = useParams();
   const e = EXPERIENCE.find((x) => x.slug === slug);
-  usePageMeta(e ? `${e.role} — ${e.org} | ${SITE}` : `Not found | ${SITE}`);
+  usePageMeta(e ? `${e.role} - ${e.org} | ${SITE}` : `Not found | ${SITE}`);
   if (!e) return <Navigate to="/work" replace />;
 
   return (
     <section className="section">
       <Link className="back-link" to="/work">
-        <BackArrow /> Back to research
+        <BackArrow /> Back to work experience
       </Link>
 
       <header className="detail-head">
@@ -339,7 +415,7 @@ export function WorkDetail() {
 export function Projects() {
   usePageMeta(
     `Projects | ${SITE}`,
-    "Research and software projects, from wearable diagnostics to mobile applications.",
+    "Research, mobile, and software projects, from wearable diagnostics to mobile applications.",
   );
   return (
     <section className="section">
@@ -442,7 +518,6 @@ export function Volunteering() {
   );
 }
 
-/* Route stays /sports; the content is music, ensembles, and competitions. */
 export function Sports() {
   usePageMeta(
     `Music & Activities | ${SITE}`,
@@ -478,8 +553,6 @@ export function Sports() {
     </section>
   );
 }
-
-/* ---------------- contact ---------------- */
 
 export function Contact() {
   const ghHandle = PROFILE.socials.github?.split("/").filter(Boolean).pop();
@@ -538,8 +611,6 @@ export function Contact() {
     </section>
   );
 }
-
-/* ---------------- 404 ---------------- */
 
 export function NotFound() {
   usePageMeta(`Page not found | ${SITE}`);

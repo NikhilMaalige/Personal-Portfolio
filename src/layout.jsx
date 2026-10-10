@@ -1,12 +1,8 @@
-/* ==================================================================
-   layout.jsx — Navbar, Footer, ScrollToTop.
-   ================================================================== */
 import React, { useState, useEffect, useRef } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { PROFILE, NAV, FOOTER_NAV, FOOTER_PROFILES } from "./data";
-import { Chevron, DownloadIcon, ExternalIcon } from "./ui";
+import { Chevron, ExternalIcon } from "./ui";
 
-/* Jumps to the top whenever the route changes. */
 export function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -79,14 +75,6 @@ export function Navbar() {
             </NavLink>
           ),
         )}
-        {PROFILE.cv && (
-          <>
-            <span className="pill-divider" />
-            <a className="pill-link cv" href={PROFILE.cv} download>
-              <DownloadIcon /> CV
-            </a>
-          </>
-        )}
       </nav>
 
       <button
@@ -108,11 +96,6 @@ export function Navbar() {
             </NavLink>
           ))}
           <NavLink to="/contact">Contact</NavLink>
-          {PROFILE.cv && (
-            <a href={PROFILE.cv} download>
-              Download CV
-            </a>
-          )}
         </div>
       )}
     </header>

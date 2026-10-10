@@ -1,10 +1,5 @@
-/* ==================================================================
-   ui.jsx — icons, small primitives, and reusable cards.
-   ================================================================== */
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-
-/* ---------------- icons ---------------- */
 
 const Ico = ({ d, size = 18 }) => (
   <svg
@@ -44,8 +39,8 @@ export const LinkedInIcon = ({ size = 18 }) => (
 
 export const Chevron = () => (
   <svg
-    width="11"
-    height="11"
+    width={11}
+    height={11}
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -116,8 +111,6 @@ export const MailIcon = ({ size = 18 }) => (
   />
 );
 
-/* ---------------- primitives ---------------- */
-
 export function Reveal({ children, delay = 0 }) {
   const ref = useRef(null);
   const [shown, setShown] = useState(false);
@@ -142,7 +135,6 @@ export function Reveal({ children, delay = 0 }) {
   );
 }
 
-/* Sets <title> and the meta description for each route. */
 export function usePageMeta(title, description) {
   useEffect(() => {
     document.title = title;
@@ -158,7 +150,6 @@ export function usePageMeta(title, description) {
   }, [title, description]);
 }
 
-/* Serif title on the left, optional mono eyebrow on the right, hairline below. */
 export const SectionHead = ({ title, eyebrow }) => (
   <>
     <div className="sec-head">
@@ -182,7 +173,6 @@ export const PageHead = ({ title, eyebrow, lead }) => (
   </>
 );
 
-/* Smaller heading used further down a page. */
 export const SubHead = ({ title, eyebrow }) => (
   <>
     <div className="sub-head">
@@ -193,7 +183,6 @@ export const SubHead = ({ title, eyebrow }) => (
   </>
 );
 
-/* "Every award →" style link that sits below a section. */
 export const MoreLink = ({ to, children }) => (
   <Link className="more-link" to={to}>
     {children} <Arrow />
@@ -221,17 +210,15 @@ export const TagList = ({ items, max = 5, flush = false }) => {
             setExpanded(!expanded);
           }}
         >
-          {expanded ? "− less" : `+${hidden} more`}
+          {expanded ? "- less" : `+${hidden} more`}
         </button>
       )}
     </div>
   );
 };
 
-/* ---------------- cards ---------------- */
-
-export const ExperienceCard = ({ e, showBullets = false }) => (
-  <Link className="card card-link" to={`/work/${e.slug}`}>
+export const ExperienceCard = ({ e, basePath = "/work", showBullets = false }) => (
+  <Link className="card card-link" to={`${basePath}/${e.slug}`}>
     <h3>{e.role}</h3>
     <p className="card-org">{e.org}</p>
     <span className="chip">{e.badge}</span>
@@ -287,7 +274,6 @@ export const ProjectCard = ({ p }) => (
   </article>
 );
 
-/* Awards render as hairline-separated rows, not cards. */
 export const AwardRow = ({ a }) => {
   const inner = (
     <>
@@ -345,7 +331,6 @@ export const ArticleRow = ({ a }) => {
   );
 };
 
-/* Single bordered panel, one column per skill group. */
 export const SkillsPanel = ({ groups }) => (
   <div className="skills-panel">
     {groups.map((g) => (
@@ -369,7 +354,7 @@ export const EducationCard = ({ e }) => (
     </div>
     <p className="edu-loc">{e.location}</p>
     <p className="edu-level">
-      {e.level} · GPA {e.gpa}
+      {e.level}{e.gpa ? ` · GPA ${e.gpa}` : ""}
     </p>
     {e.coursework?.length > 0 && (
       <>
@@ -388,9 +373,12 @@ export const ScoreCard = ({ s }) => (
     </div>
     <div className="score-grid">
       {s.breakdown.map((b) => (
-        <div key={b.label}>
-          <span>{b.label}</span>
-          <strong>{b.value}</strong>
+        <div
+          key={b.label}
+          className={`score-cell${b.label.toLowerCase().includes("total") ? " score-total" : ""}`}
+        >
+          <span className="score-label">{b.label}</span>
+          <strong className="score-value">{b.value}</strong>
         </div>
       ))}
     </div>
