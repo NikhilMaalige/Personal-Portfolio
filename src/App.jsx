@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 import { Navbar, Footer, ScrollToTop } from "./layout";
 import {
   Home, About, Research, ResearchDetail, Work, WorkDetail, Projects, Awards,
@@ -11,6 +12,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <Analytics />
       <div className="app">
         <Navbar />
         <main>
